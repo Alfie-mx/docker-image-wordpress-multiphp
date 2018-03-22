@@ -56,4 +56,4 @@ RUN curl -s \
 
 WORKDIR /app
 EXPOSE 80 443
-COPY "./docker-entrypoint.sh" "/usr/local/bin/"
+COPY docker-entrypoint.sh /usr/local/bin/
