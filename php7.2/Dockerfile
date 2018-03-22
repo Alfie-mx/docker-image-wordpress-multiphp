@@ -1,11 +1,12 @@
 FROM php:7.2-apache
 ENV TERM=xterm
 LABEL maintainer="Alfredo Rodriguez <mail@alfredordz.com>" \
-      version="0.17.0-php7.2"
+      version="0.1.0-php7.2"
 
 # Install base requirements & sensible defaults + required PHP extensions
 RUN echo "deb http://ftp.debian.org/debian stretch-backports main" >> /etc/apt/sources.list \
     && apt-get update \
+    && apt-get install nano \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         bash-completion \
         less \
@@ -42,7 +43,6 @@ RUN echo "deb http://ftp.debian.org/debian stretch-backports main" >> /etc/apt/s
 # Install wp-cli, configure apache, add scripts, create install directory & symlink
 RUN curl -s \
         -o /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
-        -o /run.sh https://raw.githubusercontent.com/visiblevc/wordpress-starter/master/run.sh \
     && chmod +x /usr/local/bin/wp /run.sh \
     && curl -s \
         https://raw.githubusercontent.com/wp-cli/wp-cli/master/utils/wp-completion.bash | \
@@ -57,4 +57,4 @@ RUN curl -s \
 
 WORKDIR /app
 EXPOSE 80 443
-CMD ["/run.sh"]
+COPY docker-entrypoint.sh /usr/local/bin/
