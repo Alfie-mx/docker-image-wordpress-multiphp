@@ -43,7 +43,7 @@ RUN echo "deb http://ftp.debian.org/debian stretch-backports main" >> /etc/apt/s
 # Install wp-cli, configure apache, add scripts, create install directory & symlink
 RUN curl -s \
         -o /usr/local/bin/wp https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar \
-        -o /run.sh https://rawgit.com/Alfie-mx/docker-image-wordpress-multiphp/master/php7.2/docker-entrypoint.sh \
+        -o /run.sh https://raw.githubusercontent.com/Alfie-mx/docker-image-wordpress-multiphp/master/run.sh \
     && chmod +x /usr/local/bin/wp /run.sh \
     && curl -s \
         https://raw.githubusercontent.com/wp-cli/wp-cli/master/utils/wp-completion.bash | \

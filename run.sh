@@ -15,6 +15,7 @@ WP_VERSION=${WP_VERSION:-latest}
 URL_REPLACE=${URL_REPLACE:-''}
 BEFORE_URL="${URL_REPLACE%,*}"
 AFTER_URL="${URL_REPLACE#*,}"
+APP_PORT=${APP_PORT:-8080}
 
 declare -A plugin_deps
 declare -A theme_deps
@@ -41,7 +42,7 @@ core config:
     define('WP_DEBUG_LOG', ${WP_DEBUG_LOG:-false});
     define('WP_DEBUG_DISPLAY', ${WP_DEBUG_DISPLAY:-true});
 core install:
-  url: ${AFTER_URL:-"$SERVER_NAME:8080"}
+  url: ${AFTER_URL:-"$SERVER_NAME:${APP_PORT}"}
   title: $DB_NAME
   admin_user: $DB_USER
   admin_password: $DB_PASS
