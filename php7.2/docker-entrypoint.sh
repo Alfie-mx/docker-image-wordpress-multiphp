@@ -326,5 +326,3 @@ main() {
 }
 
 main
-
-exec "$@"
