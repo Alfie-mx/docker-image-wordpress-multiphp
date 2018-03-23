@@ -326,3 +326,5 @@ main() {
 }
 
 main
+
+exec "$@"
