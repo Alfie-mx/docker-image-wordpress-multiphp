@@ -22,9 +22,6 @@ declare -A theme_deps
 declare -A plugin_volumes
 declare -A theme_volumes
 
-# Apache configuration
-# --------------------
-sed -i "s/#ServerName www.example.com/ServerName $SERVER_NAME\nServerAlias www.$SERVER_NAME/" /etc/apache2/sites-available/000-default.conf
 
 # WP-CLI configuration
 # ---------------------
@@ -42,7 +39,7 @@ core config:
     define('WP_DEBUG_LOG', ${WP_DEBUG_LOG:-false});
     define('WP_DEBUG_DISPLAY', ${WP_DEBUG_DISPLAY:-true});
 core install:
-  url: ${AFTER_URL:-"$SERVER_NAME:${APP_PORT}"}
+  url: ${AFTER_URL:-"$SERVER_NAME:$APP_PORT"}
   title: $DB_NAME
   admin_user: $DB_USER
   admin_password: $DB_PASS
