@@ -6,6 +6,7 @@ LABEL maintainer="Alfredo Rodriguez <mail@alfredordz.com>" \
 # Install base requirements & sensible defaults + required PHP extensions
 RUN echo "deb http://ftp.debian.org/debian jessie-backports main" >> /etc/apt/sources.list \
     && apt-get update \
+    && apt-get install nano \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         less \
         libpng12-dev \
